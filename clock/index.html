@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+</head>
+<body style="display: flex; justify-content: center; background-color: black; color: white; padding: 200px;">
+    <div id="local poster" style="padding: 5px;">Your Local Time</div>
+    <!-- <div id="clock"></div> -->
+     <!-- <input type="datetime" id="clock"> -->
+      <button id="clock"></button>
+</body>
+    <script>
+     const clock = document.getElementById('clock')
+
+     setInterval(function() { 
+        let date = new Date();
+        clock.innerHTML = date.toLocaleTimeString()
+     },1000)
+    </script>
+</html>
