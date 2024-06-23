@@ -18,10 +18,23 @@
     const startButton = document.querySelector('#startBut');
     const stopButton = document.querySelector('#stopBut');
 
-    const user = function () {
+    let user = function () {
         console.log("rishu", Date.now());
     }
     
+    // const startInterval = () => { 
+    //     mainInterval =  setInterval(user, 2000)}; 
+
+    // startButton.addEventListener('click', startInterval);
+
+    // stopButton.addEventListener('click', () => {
+    //     clearInterval(mainInterval);
+    //     console.log("name");
+    // })
+
+
+    // there are two way to write 
+
     let startInterval;
 
     startButton.addEventListener('click', () => {
@@ -30,9 +43,7 @@
 
     stopButton.addEventListener('click', () => {
         clearInterval(startInterval);
-        console.log("name");
     })
-
 
 </script>
 
