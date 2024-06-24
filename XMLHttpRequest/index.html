@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XHR</title>
+</head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Card</title>
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 16px;
+            margin: 20px;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .card h2 {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .card button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body
+    style="display: flex; justify-content: center; align-items: center; background-color: black; color: white; height: 80vh;">
+    <div class="card">
+        <img src="https://via.placeholder.com/300x150">
+        <h2>followers: <span id="followers"></span></h2>
+        <button id="add">click</button>
+    </div>
+</body>
+
+</html>
+<script>
+    const requestUrl = 'https://api.github.com/users/vermarishu'
+
+    let data;
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requestUrl);
+    xhr.onreadystatechange = function () {
+        console.log(xhr.readyState);
+        if (xhr.readyState === 4) {
+            data = JSON.parse(this.responseText)
+            console.log(data);
+            console.log(data.followers);
+            console.log(data.avatar_url);
+        }
+    }
+    xhr.send();
+
+    const Image = document.querySelector('img');
+    const followers = document.querySelector('#followers');
+    const button = document.querySelector('#add');
+
+    button.addEventListener('click', () => {
+        if (data) {
+            followers.innerHTML = `${data.followers}`;
+            Image.src = data.avatar_url;
+        } else {
+            followers.innerHTML = `Loading...`;
+        }
+    });
+
+
+</script>
+
+</html>
