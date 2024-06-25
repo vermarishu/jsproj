@@ -1,5 +1,3 @@
-const res = require("express/lib/response");
-
 new Promise(function(resolve, reject) {
 
     setTimeout(() => {
@@ -10,6 +8,19 @@ new Promise(function(resolve, reject) {
 .then(() => {
     console.log("async task resolve");
 })
+// we can also do same thing by adding function to whole system like
+// function anotherWay()  {
+//     new Promise(function(resolve, reject) {
+        
+//         setTimeout(() => {
+//             console.log("async task");
+//             resolve()
+//         }, 1000);
+//     })
+// }
+// anotherWay().then(() => {
+//     console.log("async task resolve");
+// });
 
 const promiseTwo = new Promise((resolve, reject) => {
 
