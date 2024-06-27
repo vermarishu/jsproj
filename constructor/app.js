@@ -23,4 +23,6 @@ multiple.power = 2
 
 console.log(multiple(5));
 console.log(multiple.power);
+//(. dot ) used in Object but we can also use in function
+
     console.log(multiple.prototype);
