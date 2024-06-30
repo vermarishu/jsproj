@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bind</title>
+</head>
+<body>
+    <button>bind</button>
+</body>
+<script>
+    class React {
+        constructor() {
+            this.library = "React"
+            this.server = "https://locahost:2000"
+
+            //requirement
+            document.querySelector('button').addEventListener('click', this.handleClick.bind(this))
+            
+            //The bind() method in JavaScript is a function that allows us to bind a function to a specific context. This means that when the function is called, the this keyword will refer to the context that was specified when the bind() method was called.
+        }
+        handleClick() {
+            console.log("button clicked");
+            console.log(this);
+        }
+    }
+
+    const app = new React()
+</script>
+</html>
