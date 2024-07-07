@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body style="background-color: black;">
+    <button id="green">green</button>
+    <button id="orange">orange</button>
+</body>
+<script> 
+// lexical scoping
+
+// Variables defined inside a fn are only accessible within that fn and any nested fn, child fn can access the vaiable of parent fn (gobal fn) but parent fn can't access the variable of chile fn
+console.log("rishiverma");
+    function Outer() { // parent function
+        let outerUser = "outer rishu" // variable
+        console.log(innerUser); 
+
+        function Inner() { // child fn
+            let innerUser = "inner rishu" // variable
+            console.log(outerUser);
+        }
+        // both child fn also can't share the variable to each other
+        function innerTwo() { // child fn
+            console.log(innerUser);
+        }
+        Inner()
+        innerTwo()
+    }
+    Outer()
+</script>
+<script> 
+// this not a good practies , it don't follow the dry principal
+    
+    // document.querySelector('#green').onclick = function() {
+    //     document.body.style.backgroundColor =  `green`;
+    //     console.log("rishu");
+    // }
+    // document.querySelector('#orange').onclick = function() {
+    //     document.body.style.backgroundColor = `orange`;
+    // }
+
+// real world example of closure and and follow the dry principal
+
+    function clickHandler(color) {
+        // document.body.style.backgroundColor = `${color}`
+
+        return function() {
+            document.body.style.backgroundColor =  `${color}`
+        }
+    }
+
+    document.getElementById('orange').onclick = clickHandler('orange');
+    document.getElementById('green').onclick = clickHandler('green');
+
+</script>
+</html>
